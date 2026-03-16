@@ -1,0 +1,325 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ── Fondo general ── */
+.page-bg {
+  min-height: 100vh;
+  padding: 32px 24px;
+}
+
+/* ── Dos columnas ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 50% - 50% */
+  gap: 28px;
+  align-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ── Columna izquierda ── */
+.col-left {
+  position: sticky;   /* se queda fija mientras scrolleas el PDF */
+  top: 32px;
+}
+
+/* ── Tarjeta certificado ── */
+.cert-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e5e7;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 28px;
+}
+
+.top-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+
+.badge-circle {
+  flex-shrink: 0;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: #1a2a6c;
+  border: 3px solid #c8a84b;
+  display: flex; align-items: center; justify-content: center;
+}
+.badge-svg { width: 38px; height: 38px; }
+
+.completed-by { font-size: 13px; color: #666; margin-bottom: 2px; }
+.name { font-size: 17px; font-weight: 600; color: #111; line-height: 1.3; margin-bottom: 6px; }
+.meta { font-size: 13px; color: #555; margin-bottom: 2px; }
+.meta.bold { font-weight: 600; color: #111; margin-bottom: 8px; }
+.desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+.divider { border: none; border-top: 1px solid #e5e5e7; margin: 18px 0; }
+
+.share-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.share-label { font-size: 13px; color: #555; }
+.btn-in  { background: #0a66c2; color: #fff; border: none; border-radius: 20px; padding: 7px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.btn-tw  { background: #000;    color: #fff; border: none; border-radius: 20px; padding: 7px 16px; font-size: 13px; cursor: pointer; }
+.btn-fb  { background: #1877f2; color: #fff; border: none; border-radius: 20px; padding: 7px 16px; font-size: 13px; cursor: pointer; }
+
+.section-title { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 8px; }
+.unit-title { font-size: 13px; font-weight: 600; color: #111; margin: 14px 0 4px; }
+ul { padding-left: 18px; }
+ul li { font-size: 13px; color: #555; margin-bottom: 3px; line-height: 1.5; }
+
+.ministry-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid #e5e5e7;
+}
+.flag-stripes { display: flex; flex-direction: column; width: 22px; height: 16px; border-radius: 2px; overflow: hidden; }
+.stripe-y { background: #FFD100; flex: 2; }
+.stripe-b { background: #003893; flex: 1; }
+.stripe-r { background: #CE1126; flex: 1; }
+.ministry-label { font-size: 12px; color: #666; font-weight: 500; }
+
+/* ── Columna derecha: PDF ── */
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pdf-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 88vh;
+  border-radius: 16px;
+  border: 1px solid #e5e5e7;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  background: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.pdf-frame:hover {
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* ── Fallback iOS ── */
+.ios-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e5e7;
+  text-align: center;
+}
+.ios-fallback p { font-size: 14px; color: #555; }
+.ios-fallback a {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #0071e3;
+  color: #fff;
+  border-radius: 980px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Tablet: columnas más angostas ── */
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .page-bg { padding: 20px 16px; }
+  .cert-card { padding: 20px; }
+  .pdf-frame { height: 80vh; }
+}
+
+/* ── Móvil: una sola columna ── */
+@media (max-width: 640px) {
+  .two-col {
+    grid-template-columns: 1fr;   /* apila verticalmente */
+  }
+  .col-left {
+    position: static;             /* quita el sticky en móvil */
+  }
+  .page-bg { padding: 16px 12px; }
+  .cert-card { padding: 18px; border-radius: 14px; }
+  .badge-circle { width: 58px; height: 58px; }
+  .badge-svg { width: 30px; height: 30px; }
+  .name { font-size: 15px; }
+  .pdf-frame {
+    height: 60vh;
+    border-radius: 10px;
+  }
+  .pdf-frame:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+
+.ministry-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* ── Carrusel de fotos ── */
+.carousel-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e5e7;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.carousel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.carousel-btn:hover { background: rgba(0,0,0,0.7); }
+.carousel-btn.left  { left: 8px; }
+.carousel-btn.right { right: 8px; }
+
+.carousel-counter {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dot.active { background: #1a2a6c; }
+
+
+/* ── Modal de imagen ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  outline: none;
+}
+
+.modal-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.modal-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 1001;
+}
+.modal-btn:hover { background: rgba(255,255,255,0.3); }
+.modal-btn.left  { left: 20px; }
+.modal-btn.right { right: 20px; }
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 1001;
+}
+.modal-close:hover { background: rgba(255,255,255,0.3); }
+
+.modal-counter {
+  position: absolute;
+  bottom: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+
+/* Cursor pointer en la imagen del carrusel para indicar que es clicable */
+.carousel-img {
+  cursor: zoom-in;
+}
