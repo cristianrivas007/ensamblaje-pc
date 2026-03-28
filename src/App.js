@@ -6,7 +6,9 @@ const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 const images = [
   "/imagen1.jpeg", "/imagen2.jpeg", "/imagen3.jpeg",
   "/imagen4.jpeg", "/imagen5.jpeg", "/imagen6.jpeg",
-  "/imagen7.jpeg", "/imagen8.jpeg",
+  "/imagen7.jpeg", "/imagen8.jpeg", "/imagen9.jpeg",
+  "/imagen10.jpeg", "/imagen11.jpeg", "/imagen12.jpeg",
+  "/imagen13.jpeg", "/imagen14.jpeg", "/imagen15.jpeg",
 ];
 
 function ImageCarousel() {
